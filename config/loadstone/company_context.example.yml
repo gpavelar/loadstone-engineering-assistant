@@ -1,0 +1,55 @@
+# Company / team context embedded into every Loadstone agent interaction.
+# Copy to company_context.yml and replace everything below with your own.
+# This drives how the agent frames recommendations (e.g. platform teams have
+# different "customer" semantics than product-facing teams).
+#
+# All content here is a generic placeholder. Swap in your organisation's real
+# purpose, team context, and values — the agent quotes `name` and
+# `agent_guidance` verbatim, so write them the way you want them applied.
+
+purpose: "<Your organisation's purpose statement, in one line.>"
+
+# Free text describing who your team is and who it serves. This is where you
+# tell the agent what "customer impact" means in your context. The example
+# below is written for a platform team — rewrite it for yours.
+team_context: |
+  This team builds platform/infrastructure that other engineering teams
+  consume. Our "customers" are internal engineering teams. When talking
+  about customer impact, we mean: does this unblock other teams? Does it
+  reduce risk? Does it improve developer experience for teams downstream
+  of us?
+
+# Your engineering or company values. Keys are arbitrary and ignored by the
+# code — only `name` and `agent_guidance` are read. Add or remove entries
+# freely. `description` is documentation for humans reading this file.
+values:
+  value_one:
+    name: "<Your First Value>"
+    description: "<How your organisation states this value, in one line.>"
+    agent_guidance: |
+      <How the agent should apply this value when advising. Be concrete —
+      this text is injected verbatim into the system prompt. Example: for a
+      platform team, connect work to reliability (fewer incidents), developer
+      experience (less friction), and unblocking downstream delivery.>
+
+  value_two:
+    name: "<Your Second Value>"
+    description: "<How your organisation states this value, in one line.>"
+    agent_guidance: |
+      <Example: favour decommissioning legacy over maintaining it. Every old
+      system kept alive is future debt. Encourage finishing migrations over
+      starting new ones.>
+
+  value_three:
+    name: "<Your Third Value>"
+    description: "<How your organisation states this value, in one line.>"
+    agent_guidance: |
+      <Example: be direct. Say "do this", not "consider this". Prefer
+      finishing over starting.>
+
+  value_four:
+    name: "<Your Fourth Value>"
+    description: "<How your organisation states this value, in one line.>"
+    agent_guidance: |
+      <Example: surface cross-team dependencies. Respect differing priorities
+      and timelines across teams.>

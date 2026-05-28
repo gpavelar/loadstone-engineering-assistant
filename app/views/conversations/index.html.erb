@@ -1,0 +1,71 @@
+<%= turbo_stream_from "conversation_#{@conversation.id}" %>
+<div class="flex h-screen w-full overflow-hidden bg-gray-900 text-gray-100"
+     data-controller="chat"
+     data-chat-commands-value="<%= Skills::Registry.palette_entries.to_json %>">
+  <%# Left Sidebar %>
+  <aside class="flex w-64 flex-col border-r border-gray-700 bg-gray-950">
+    <div class="p-4 border-b border-gray-700 flex items-center gap-3">
+      <%= image_tag "loadstone-icon.png", class: "h-9 w-9 rounded-lg", alt: "Loadstone" %>
+      <div>
+        <h1 class="text-lg font-bold text-white tracking-tight leading-tight">Loadstone</h1>
+        <p class="text-xs text-gray-500">A lodestone for your loadstone</p>
+      </div>
+    </div>
+
+    <div class="p-3 space-y-2">
+      <%= link_to conversations_path, data: { turbo_method: :post }, class: "flex items-center gap-2 w-full rounded-lg border border-gray-600 px-3 py-2 text-sm text-gray-300 hover:bg-gray-800 transition" do %>
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+        New conversation
+      <% end %>
+      <%= link_to ideas_path, class: "flex items-center gap-2 w-full rounded-lg border border-gray-600 px-3 py-2 text-sm text-gray-300 hover:bg-gray-800 transition" do %>
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+        Ideas
+      <% end %>
+    </div>
+
+    <nav class="flex-1 overflow-y-auto px-3 py-1 space-y-0.5">
+      <% @conversations.each do |conv| %>
+        <%= link_to conversation_path(conv), class: "block rounded-lg px-3 py-2 text-sm truncate #{conv == @conversation ? 'bg-gray-800 text-white' : 'text-gray-400 hover:bg-gray-800 hover:text-gray-200'} transition" do %>
+          <%= conv.title || "New chat" %>
+        <% end %>
+      <% end %>
+    </nav>
+
+    <div class="border-t border-gray-700 p-4">
+      <p class="text-sm text-gray-400"><%= @current_user.name %></p>
+    </div>
+  </aside>
+
+  <%# Main Chat Area %>
+  <main class="flex flex-1 flex-col min-w-0">
+    <%# Messages %>
+    <div id="messages" class="flex-1 overflow-y-auto px-4 py-6 space-y-4" data-chat-target="messages">
+      <% if @messages.empty? %>
+        <div id="welcome-state" class="flex flex-col items-center justify-center h-full text-center">
+          <h2 class="text-2xl font-semibold text-gray-300 mb-2">Welcome to Loadstone</h2>
+          <p class="text-gray-500 mb-6 max-w-md">Your AI assistant for engineering focus, unblocking, and connecting daily work to team goals.</p>
+          <div class="grid grid-cols-2 gap-3 text-sm max-w-lg">
+            <% Skills::Registry.palette_entries.reject { |e| e[:cmd] == "/help" }.each do |entry| %>
+              <div class="rounded-lg bg-gray-800 p-3 text-left">
+                <span class="font-mono text-blue-400"><%= entry[:cmd] %></span>
+                <p class="text-gray-400 mt-1"><%= entry[:desc] %></p>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% else %>
+        <% @messages.each do |message| %>
+          <%= render partial: "messages/message", locals: { message: message } %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <%# Input Form %>
+    <div class="border-t border-gray-700 bg-gray-900 p-4">
+      <%= form_with url: conversation_messages_path(@conversation), method: :post, class: "flex gap-3", data: { chat_target: "form", action: "submit->chat#submit" } do |f| %>
+        <%= f.text_field :content, placeholder: "Type a message or /command...", autofocus: true, autocomplete: "off", class: "flex-1 rounded-lg border border-gray-600 bg-gray-800 px-4 py-3 text-gray-100 placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500", data: { chat_target: "input" } %>
+        <%= f.submit "Send", class: "rounded-lg bg-blue-600 px-6 py-3 font-medium text-white hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition cursor-pointer", data: { chat_target: "sendButton" } %>
+      <% end %>
+    </div>
+  </main>
+</div>

@@ -1,0 +1,10 @@
+<%= turbo_stream.append "messages" do %>
+  <%= render partial: "messages/message", locals: { message: @user_message } %>
+<% end %>
+
+<%= turbo_stream.append "messages" do %>
+  <%= render partial: "messages/streaming_message", locals: { message: @assistant_message } %>
+<% end %>
+
+<%# Remove the welcome/empty state if present %>
+<%= turbo_stream.remove "welcome-state" %>

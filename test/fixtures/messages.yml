@@ -1,0 +1,32 @@
+investigation_one_user_prompt:
+  conversation: investigation_one
+  role: user
+  content: |
+    IDEA: Filters across two FE stacks
+    NOTES: Compare filter implementations.
+
+investigation_one_assistant_report:
+  conversation: investigation_one
+  role: assistant
+  content: |
+    # Report: Filter Table Across Storefronts
+
+    ## Understanding
+
+    Two things are being asked: a concrete table of filters per item type,
+    and validation that this format scales.
+
+    ## Evidence
+
+    Three sources of truth exist — see `your-monolith/.../filter_configuration.rb`,
+    `your-frontend` API adapter, and your-other-frontend `apps/web/app/lib/buildAvailableFilters.ts`.
+
+    ## Approaches
+
+    - A: One-shot doc table (~1 day) — answers question, doesn't fix drift
+    - B: Generated table in CI (3-5 days) — catches drift, sets pattern
+    - C: Shared backend contract for your-other-frontend (weeks) — fixes root cause
+
+    ## Next steps
+
+    Confirm your-other-frontend doesn't consume backend schema; check Confluence for prior tables.

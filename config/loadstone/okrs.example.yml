@@ -1,0 +1,36 @@
+# OKRs the team is working on this quarter. Surfaced by /compass and /journal
+# to tie daily work to higher-level outcomes. Copy to okrs.yml and replace.
+okrs:
+  - id: "okr-reliability"
+    theme: "Fix-the-basics"
+    objective: "The search experience should be effortless"
+    context: "Q-on-Q reduction in incident frequency; clear customer pain in feedback."
+    key_results:
+      - "Complete legacy API migration"
+      - "Reduce p95 latency below target"
+      - "Cut incident count by 30% vs last quarter"
+    related_tickets:
+      - "PROJ-1000"
+      - "PROJ-1001"
+
+  - id: "okr-modernise"
+    theme: "Fix-the-basics"
+    objective: "Modernise item display with enriched experience"
+    context: "Quarter focus on category pages."
+    key_results:
+      - "Migrate frontend pages to new component system"
+      - "Ship enriched product cards across category pages"
+    related_tickets:
+      - "PROJ-1100"
+
+  - id: "okr-reinvent"
+    theme: "Continuously reinvent how we work"
+    objective: "Decommission legacy, reduce toil"
+    context: "Each old system kept alive is future debt."
+    key_results:
+      - "Decommission legacy service X (phases 1-2)"
+      - "Assess legacy service Y viability"
+      - "Reduce operational toil through automation"
+    related_tickets:
+      - "PROJ-1200"
+      - "PROJ-1201"

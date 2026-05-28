@@ -1,0 +1,13 @@
+pending:
+  idea: filters_table
+  status: queued
+
+done_one:
+  idea: filters_table
+  status: done
+
+done_one_with_report:
+  idea: filters_table
+  status: done
+  conversation: investigation_one
+  prompt: focus on perf

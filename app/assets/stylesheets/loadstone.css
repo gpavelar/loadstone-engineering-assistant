@@ -1,0 +1,154 @@
+/* Loadstone — Chat message styling for dark mode markdown output */
+
+/* Widen assistant messages for better readability */
+.message-assistant {
+  max-width: 56rem; /* wider than default 42rem */
+}
+
+/* Prose overrides for dark mode chat bubbles */
+.prose-loadstone {
+  color: #e5e7eb; /* gray-200 */
+  line-height: 1.6;
+}
+
+.prose-loadstone h2 {
+  color: #f9fafb; /* gray-50 */
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid #374151; /* gray-700 */
+}
+
+.prose-loadstone h3 {
+  color: #f3f4f6; /* gray-100 */
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 0.35rem;
+}
+
+.prose-loadstone h4 {
+  color: #d1d5db; /* gray-300 */
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-top: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+/* Lists */
+.prose-loadstone ul,
+.prose-loadstone ol {
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+  padding-left: 1.25rem;
+}
+
+.prose-loadstone li {
+  margin-top: 0.15rem;
+  margin-bottom: 0.15rem;
+}
+
+.prose-loadstone li::marker {
+  color: #6b7280; /* gray-500 */
+}
+
+/* Bold text — make it pop */
+.prose-loadstone strong {
+  color: #f9fafb; /* gray-50 */
+  font-weight: 600;
+}
+
+/* Links — clickable, blue, underlined */
+.prose-loadstone a {
+  color: #60a5fa; /* blue-400 */
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose-loadstone a:hover {
+  color: #93bbfc; /* lighter blue */
+}
+
+/* Tables */
+.prose-loadstone table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.85rem;
+}
+
+.prose-loadstone th {
+  background: #1f2937; /* gray-800 */
+  color: #d1d5db; /* gray-300 */
+  font-weight: 600;
+  text-align: left;
+  padding: 0.4rem 0.6rem;
+  border-bottom: 2px solid #4b5563; /* gray-600 */
+}
+
+.prose-loadstone td {
+  padding: 0.35rem 0.6rem;
+  border-bottom: 1px solid #374151; /* gray-700 */
+  vertical-align: top;
+}
+
+.prose-loadstone tr:last-child td {
+  border-bottom: none;
+}
+
+/* Code blocks */
+.prose-loadstone code {
+  background: #1f2937; /* gray-800 */
+  color: #fbbf24; /* amber-400 */
+  padding: 0.1rem 0.35rem;
+  border-radius: 0.25rem;
+  font-size: 0.85em;
+}
+
+.prose-loadstone pre {
+  background: #111827; /* gray-900 */
+  border: 1px solid #374151; /* gray-700 */
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  overflow-x: auto;
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose-loadstone pre code {
+  background: none;
+  color: #e5e7eb;
+  padding: 0;
+  font-size: 0.85rem;
+}
+
+/* Blockquotes — used for the "Anything changed?" prompt */
+.prose-loadstone blockquote {
+  border-left: 3px solid #3b82f6; /* blue-500 */
+  padding-left: 0.75rem;
+  margin: 0.75rem 0;
+  color: #9ca3af; /* gray-400 */
+  font-style: italic;
+}
+
+/* Horizontal rules — section separators */
+.prose-loadstone hr {
+  border: none;
+  border-top: 1px solid #374151; /* gray-700 */
+  margin: 1rem 0;
+}
+
+/* Paragraphs — tighter spacing */
+.prose-loadstone p {
+  margin-top: 0.25rem;
+  margin-bottom: 0.35rem;
+}
+
+/* Emoji headings — give them some space */
+.prose-loadstone h2:first-child,
+.prose-loadstone h3:first-child {
+  margin-top: 0;
+}

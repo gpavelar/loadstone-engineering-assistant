@@ -1,0 +1,17 @@
+filters_table:
+  user: alice
+  title: Filters across two FE stacks
+  body: |
+    Compare filter implementations in storefront vs your-other-frontend.
+    Want a table showing what's available where.
+
+bare_idea:
+  user: alice
+  title: Search relevance tuning
+  body: ""
+
+archived_one:
+  user: alice
+  title: Old thought
+  body: "Decided against this."
+  archived_at: <%= 7.days.ago.to_fs(:db) %>

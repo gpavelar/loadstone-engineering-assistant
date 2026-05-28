@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "idea_row_#{@idea.id}",
+      partial: "ideas/idea_row",
+      locals: { idea: @idea, selected: true } %>

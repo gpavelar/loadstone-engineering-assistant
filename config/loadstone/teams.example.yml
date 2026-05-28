@@ -1,0 +1,25 @@
+# Team configuration used by /planning-gap and other team-aware skills.
+# Copy this file to teams.yml and fill in real values.
+# UUIDs come from your Atlassian Jira Settings → Teams → (team).
+# Planning page IDs are the numeric ID in the Confluence page URL.
+
+atlassian_cloud_id: your-org.atlassian.net
+
+teams:
+  your_team:
+    description: Your Team
+    team_id: 00000000-0000-0000-0000-000000000000
+    jira_project: PROJ
+    planning_page_id: "123456"
+
+  platform:
+    description: Platform Infrastructure Team
+    team_id: 00000000-0000-0000-0000-000000000001
+    jira_project: PROJ
+    planning_page_id: null
+
+  content:
+    description: Content Pipeline Team
+    team_id: 00000000-0000-0000-0000-000000000002
+    jira_project: CONT
+    planning_page_id: null

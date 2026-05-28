@@ -1,0 +1,3 @@
+<div class="flex <%= message.role == 'user' ? 'justify-end' : 'justify-start' %>" id="message_<%= message.id %>">
+  <%= render partial: "messages/message_bubble", locals: { message: message } %>
+</div>

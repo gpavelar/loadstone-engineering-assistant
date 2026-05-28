@@ -1,0 +1,22 @@
+# Team-level config used by skills that need team metadata (slack channels,
+# escalation paths). Copy to team_config.yml and fill in your real values.
+teams:
+  your_team:
+    name: "Your Team"
+    domain: "Your Domain"
+    slack_channels:
+      - "#your-team-helpline"
+      - "#your-team-engineering"
+    github_repos: []
+    buildkite_pipelines: []
+    members:
+      - "Alex Rivera"
+      - "Jordan Park"
+      - "Sam Okonkwo"
+    escalation_path:
+      - role: "Tech Lead"
+        name: "TBD"
+      - role: "Engineering Manager"
+        name: "Morgan Chen"
+      - role: "Domain Lead"
+        name: "TBD"

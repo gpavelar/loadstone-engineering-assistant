@@ -1,0 +1,38 @@
+<section class="mt-8">
+  <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-3">
+    Investigations
+    <span class="text-gray-500 normal-case font-normal">(<%= idea.investigations.size %>)</span>
+  </h3>
+
+  <details class="mb-4 border border-gray-700 rounded">
+    <summary class="px-3 py-2 text-sm cursor-pointer hover:bg-gray-800">Investigate this idea</summary>
+    <%= form_with url: idea_investigations_path(idea), method: :post,
+          data: { controller: "mode-picker" }, class: "p-3 space-y-2" do |f| %>
+
+      <div class="flex flex-wrap gap-1 text-xs">
+        <%= mode_chip("", "Default", active: true) %>
+        <% Skills::InvestigationModes::MODES.each do |key, meta| %>
+          <%= mode_chip(key, meta[:label]) %>
+        <% end %>
+      </div>
+
+      <%= f.hidden_field :"investigation[mode]", value: "",
+            data: { mode_picker_target: "modeInput" } %>
+
+      <%= f.text_area :"investigation[prompt]",
+            placeholder: "Optional steering — pick a mode above or type your own.",
+            rows: 2,
+            data: { mode_picker_target: "steering" },
+            class: "w-full bg-gray-900 border border-gray-700 rounded p-2 text-sm" %>
+
+      <%= f.submit "Run investigation",
+            class: "px-3 py-1 text-sm bg-blue-600 hover:bg-blue-500 rounded" %>
+    <% end %>
+  </details>
+
+  <div id="investigations_<%= idea.id %>" class="space-y-2">
+    <% idea.investigations.order(created_at: :desc).each do |inv| %>
+      <%= render "investigations/summary", investigation: inv %>
+    <% end %>
+  </div>
+</section>
