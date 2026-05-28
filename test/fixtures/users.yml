@@ -1,0 +1,5 @@
+alice:
+  name: User
+  email: test-user@example.com
+  jira_account_id: abc123
+  github_username: test-user

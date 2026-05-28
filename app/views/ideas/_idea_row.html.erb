@@ -1,0 +1,16 @@
+<% selected = local_assigns.fetch(:selected, false) %>
+<%= link_to idea_path(idea),
+      id: "idea_row_#{idea.id}",
+      data: { idea_id: idea.id },
+      class: "block rounded px-3 py-2 text-sm #{selected ? 'bg-gray-800 text-white' : 'text-gray-400 hover:bg-gray-800'}" do %>
+  <div class="truncate font-medium"><%= idea.title %></div>
+  <div class="text-xs text-gray-500 mt-0.5">
+    <%= time_ago_in_words(idea.updated_at) %> ago
+    <% run_count = idea.investigations.size %>
+    <% if run_count > 0 %>
+      · <%= pluralize(run_count, "run") %>
+      <% running = idea.investigations.count { |i| i.status == "running" } %>
+      <% if running > 0 %>· <span class="text-yellow-400"><%= running %> running</span><% end %>
+    <% end %>
+  </div>
+<% end %>

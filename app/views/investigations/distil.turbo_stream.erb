@@ -1,0 +1,11 @@
+<%= turbo_stream.replace "idea_editor_#{@idea.id}",
+      partial: "ideas/editor",
+      locals: { idea: @idea } %>
+
+<%= turbo_stream.replace "investigation_#{@investigation.id}",
+      partial: "investigations/summary",
+      locals: { investigation: @investigation } %>
+
+<%= turbo_stream.append "toast_container",
+      partial: "shared/toast",
+      locals: { message: "✓ Findings section appended" } %>

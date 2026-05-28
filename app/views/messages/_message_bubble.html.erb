@@ -1,0 +1,8 @@
+<div class="<%= message.role == 'user' ? 'max-w-2xl rounded-2xl rounded-br-sm bg-blue-600 text-white' : 'message-assistant rounded-2xl rounded-bl-sm bg-gray-800 text-gray-100' %> px-5 py-3">
+  <% if message.role == "assistant" && message.skill.present? && message.skill != "general" %>
+    <span class="mb-2 inline-block rounded-full bg-gray-700 px-2.5 py-0.5 text-xs font-medium text-blue-300"><%= message.skill %></span>
+  <% end %>
+  <div class="<%= message.role == 'assistant' ? 'prose-loadstone' : 'prose prose-invert prose-sm' %> max-w-none break-words" id="message_content_<%= message.id %>">
+    <%= render_markdown(message.content) %>
+  </div>
+</div>

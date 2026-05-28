@@ -1,0 +1,16 @@
+<article class="border border-gray-700 rounded p-4 mb-3">
+  <div class="text-xs text-gray-500 mb-2">
+    <%= investigation.created_at.strftime("%d %b %Y %H:%M") %> · <%= investigation.status %>
+  </div>
+  <% if investigation.done? && investigation.conversation %>
+    <div class="prose prose-invert prose-sm max-w-none">
+      <%= simple_format(investigation.conversation.messages.where(role: "assistant").last&.content.to_s) %>
+    </div>
+    <%= link_to "Continue as chat", conversation_path(investigation.conversation),
+          class: "inline-block mt-3 text-sm text-blue-400 hover:text-blue-300" %>
+  <% elsif investigation.failed? %>
+    <p class="text-sm text-red-400"><%= investigation.error_message %></p>
+  <% else %>
+    <p class="text-sm text-gray-400">Status: <%= investigation.status %>…</p>
+  <% end %>
+</article>

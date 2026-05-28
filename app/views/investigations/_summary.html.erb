@@ -1,0 +1,37 @@
+<details id="investigation_<%= investigation.id %>"
+         class="border border-gray-700 rounded p-2 text-sm">
+  <summary class="cursor-pointer flex items-center gap-2">
+    <%= status_badge(investigation.status) %>
+    <span class="text-gray-400"><%= investigation.created_at.strftime("%d %b %H:%M") %></span>
+    <% if investigation.mode.present? %>
+      <span class="text-xs px-2 py-0.5 rounded bg-purple-900 text-purple-200">
+        <%= Skills::InvestigationModes.label_for(investigation.mode) %>
+      </span>
+    <% end %>
+    <% if investigation.prompt.present? %>
+      <span class="text-gray-500 truncate">· "<%= investigation.prompt.truncate(60) %>"</span>
+    <% end %>
+  </summary>
+  <div class="mt-2 pl-2 border-l border-gray-700">
+    <% if investigation.done? && investigation.conversation %>
+      <div class="prose prose-invert prose-sm max-w-none">
+        <%= simple_format(investigation.conversation.messages.where(role: "assistant").last&.content.to_s) %>
+      </div>
+      <div class="flex items-center gap-3 mt-2">
+        <%= link_to "Continue as chat", conversation_path(investigation.conversation),
+              class: "text-blue-400 hover:text-blue-300 text-xs" %>
+
+        <%= button_to distil_idea_investigation_path(investigation.idea, investigation),
+              method: :post,
+              data: { turbo_submits_with: "Distilling…" },
+              class: "text-xs px-2 py-0.5 rounded #{investigation.distilled_at ? 'bg-gray-700 text-gray-300 hover:bg-gray-600' : 'bg-blue-700 text-blue-100 hover:bg-blue-600'}" do %>
+          <%= investigation.distilled_at ? "Distil again" : "Distil into note" %>
+        <% end %>
+      </div>
+    <% elsif investigation.failed? %>
+      <p class="text-red-400 text-xs"><%= investigation.error_message %></p>
+    <% else %>
+      <p class="text-gray-400 text-xs">Running…</p>
+    <% end %>
+  </div>
+</details>

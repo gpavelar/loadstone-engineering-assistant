@@ -1,0 +1,53 @@
+# Team member personas — drives /stakeholders, /prep, /onboard, /handover.
+# Copy this file to personas.yml and replace with your real team members.
+# All names below are fictional placeholders.
+personas:
+  - name: "Alex Rivera"
+    email: "alex.rivera@example.com"
+    role: "Senior Software Engineer"
+    team: "Search Platform"
+    skills:
+      - "search infrastructure"
+      - "indexing pipelines"
+      - "observability"
+
+  - name: "Jordan Park"
+    email: "jordan.park@example.com"
+    role: "Software Engineer"
+    team: "Search Platform"
+    skills:
+      - "search relevance"
+      - "API migrations"
+
+  - name: "Sam Okonkwo"
+    email: "sam.okonkwo@example.com"
+    role: "Software Engineer"
+    team: "Search Platform"
+    skills:
+      - "frontend"
+      - "React"
+
+  - name: "Morgan Chen"
+    email: "morgan.chen@example.com"
+    role: "Engineering Manager"
+    team: "Search Platform"
+    skills:
+      - "team coordination"
+      - "OKR alignment"
+      - "stakeholder management"
+
+  - name: "Riley Santos"
+    email: "riley.santos@example.com"
+    role: "Software Engineer"
+    team: "Content Pipeline"
+    skills:
+      - "content ingestion"
+      - "batch processing"
+
+  - name: "Jamie Walsh"
+    email: "jamie.walsh@example.com"
+    role: "Product Manager"
+    team: "Search Platform"
+    skills:
+      - "product strategy"
+      - "roadmap planning"
