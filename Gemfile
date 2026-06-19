@@ -32,7 +32,7 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "bootsnap", require: false
 
 # Anthropic Claude API client
-gem "anthropic", "~> 1.0"
+gem "anthropic", "~> 1.49"
 # HTTP client
 gem "faraday", "~> 2.0"
 # Markdown rendering
