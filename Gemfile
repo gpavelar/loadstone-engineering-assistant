@@ -38,7 +38,7 @@ gem "faraday", "~> 2.0"
 # Markdown rendering
 gem "redcarpet", "~> 3.6"
 # Background jobs (Rails 7.2 built-in)
-gem "solid_queue", "~> 1.0"
+gem "solid_queue", "~> 1.6"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
