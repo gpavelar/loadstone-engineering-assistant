@@ -34,7 +34,7 @@ gem "bootsnap", require: false
 # Anthropic Claude API client
 gem "anthropic", "~> 1.0"
 # HTTP client
-gem "faraday", "~> 2.0"
+gem "faraday", "~> 2.15"
 # Markdown rendering
 gem "redcarpet", "~> 3.6"
 # Background jobs (Rails 7.2 built-in)
